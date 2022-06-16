@@ -1,0 +1,17 @@
+{
+  "lang": "en",
+  "dir": "ltr",
+  "name": "memes",
+  "short_name": "meme",
+  "icons": [{
+    "src": "download.jpg",
+    "sizes": "144x144",
+    "type": "image/jpg"
+  }],
+  "scope": "/",
+  "id": "meme",
+  "start_url": "/start.html",
+  "display": "fullscreen",
+  "orientation": "landscape",
+  "background_color": "pink"
+}
