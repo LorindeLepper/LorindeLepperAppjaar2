@@ -3,14 +3,21 @@
   "dir": "ltr",
   "name": "memes",
   "short_name": "meme",
-  "icons": [{
-    "src": "download.jpg",
-    "sizes": "144x144",
-    "type": "image/jpg"
-  }],
+  "icons": [
+    {
+      "src": "./img/funny192.jpg",
+      "sizes": "192x192",
+      "type": "image/jpg"
+    },
+    {
+      "src": "./img/funny512.jpg",
+      "sizes": "512x512",
+      "type": "image/jpg"
+    }
+  ],
   "scope": "/",
   "id": "meme",
-  "start_url": "/start.html",
+  "start_url": ".",
   "display": "fullscreen",
   "orientation": "landscape",
   "background_color": "pink"
