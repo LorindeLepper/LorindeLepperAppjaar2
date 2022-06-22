@@ -322,6 +322,12 @@
 <!-- Vanaf hier custom Javascript-->
 <script>
 
+    window.addEventListener("load", () => {
+        if ("serviceWorker" in navigator) {
+            navigator.serviceWorker.register("service-worker.js");
+        }
+    });
+
     // Instantiation
     const topAppBarElement = document.querySelector('.mdc-top-app-bar');
     const topAppBar = new MDCTopAppBar(topAppBarElement);
@@ -403,14 +409,6 @@
         // URL weer aanpassen naar home voor de zekeheid
         history.pushState(null,null,window.location.pathname);
     }
-
-
-    window.addEventListener("load", () => {
-        console.log('test');
-        if ("serviceWorker" in navigator) {
-            navigator.serviceWorker.register("service-worker.js");
-        }
-    });
 
 
 </script>
