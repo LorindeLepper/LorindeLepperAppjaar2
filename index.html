@@ -322,13 +322,6 @@
 <!-- Vanaf hier custom Javascript-->
 <script>
 
-    // laad de serviceWorker in
-    window.addEventListener("load", () => {
-        if ("serviceWorker" in navigator) {
-            navigator.serviceWorker.register("service-worker.js");
-        }
-    });
-
     // Instantiation
     const topAppBarElement = document.querySelector('.mdc-top-app-bar');
     const topAppBar = new MDCTopAppBar(topAppBarElement);
@@ -349,11 +342,12 @@
         drawer.open = true;
     });
 
-    // hidefunctie aanroepen
+    // hidefunctie verbergt alle fotos en gifs
     function hideFunction() {
         document.querySelectorAll('.mdc-image-list__item').forEach( element => element.classList.add('hidden'))
     }
-    // showfunctie aanroepen
+
+    // de showfunctie laat alle fotos en gifs weer zien met een specifieke
     function showFunction(cat) {
         hideFunction();
         let items = document.querySelectorAll('.' + cat).forEach(element => element.classList.remove('hidden'))
@@ -406,6 +400,14 @@
         // wip
         document.getElementById("meme-title").title = title;
 
+        
+        // laad de serviceWorker in
+        window.addEventListener("load", () => {
+            if ("serviceWorker" in navigator) {
+                navigator.serviceWorker.register("service-worker.js");
+            }
+        });
+
 
     }
 
@@ -413,7 +415,7 @@
     function closeSheets(){
         // herstel de hoogte van de homepage weer naar oorspronkelijk formaat
         document.getElementById('main-content').style.height='auto';
-        // geeft aan dat de margins die je hebt gebruikt terug komen
+
         document.getElementById('main-content').style.overflowY='auto';
 
         // Verwijder eerste "alle" sheets weer uit het zicht met een animatie en daarna ook niet meer weergeven in browser
