@@ -19,5 +19,6 @@
   "start_url": ".",
   "display": "fullscreen",
   "orientation": "landscape",
-  "background_color": "pink"
+  "background_color": "pink",
+  "theme_color": "pink"
 }
