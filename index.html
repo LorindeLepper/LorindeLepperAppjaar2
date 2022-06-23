@@ -322,6 +322,7 @@
 <!-- Vanaf hier custom Javascript-->
 <script>
 
+
     // Instantiation
     const topAppBarElement = document.querySelector('.mdc-top-app-bar');
     const topAppBar = new MDCTopAppBar(topAppBarElement);
@@ -400,14 +401,6 @@
         // wip
         document.getElementById("meme-title").title = title;
 
-        
-        // laad de serviceWorker in
-        window.addEventListener("load", () => {
-            if ("serviceWorker" in navigator) {
-                navigator.serviceWorker.register("service-worker.js");
-            }
-        });
-
 
     }
 
@@ -429,6 +422,12 @@
         history.pushState(null,null,window.location.pathname);
     }
 
+    // laad de serviceWorker in
+    window.addEventListener("load", () => {
+        if ("serviceWorker" in navigator) {
+            navigator.serviceWorker.register("service-worker.js");
+        }
+    });
 
 </script>
 
