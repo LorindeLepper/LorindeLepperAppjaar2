@@ -4,9 +4,9 @@
   "short_name": "meme",
   "icons": [
     {
-      "src": "./img/funny192.svg",
+      "src": "./img/funny192.png",
       "sizes": "192x192",
-      "type": "image/svg"
+      "type": "image/png"
     },
     {
       "src": "./img/funny512.png",
