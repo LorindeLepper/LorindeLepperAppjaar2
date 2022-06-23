@@ -322,12 +322,6 @@
 <!-- Vanaf hier custom Javascript-->
 <script>
 
-    window.addEventListener("load", () => {
-        if ("serviceWorker" in navigator) {
-            navigator.serviceWorker.register("service-worker.js");
-        }
-    });
-
     // Instantiation
     const topAppBarElement = document.querySelector('.mdc-top-app-bar');
     const topAppBar = new MDCTopAppBar(topAppBarElement);
@@ -339,17 +333,20 @@
     const listEl = document.querySelector('.mdc-drawer .mdc-list');
 
 
+    // als je naast de open navigatie drukt gaat hij dicht
     listEl.addEventListener('click', (event) => {
         drawer.open = false;
     });
-
+    // als je op de 3 streepjes links boven drukt komt de navigatie tevoorschijn
     document.querySelector('.mdc-top-app-bar__navigation-icon').addEventListener('click', (event)=>{
         drawer.open = true;
     });
 
+    // hidefunctie aanroepen
     function hideFunction() {
         document.querySelectorAll('.mdc-image-list__item').forEach( element => element.classList.add('hidden'))
     }
+    // showfunctie aanroepen
     function showFunction(cat) {
         hideFunction();
         let items = document.querySelectorAll('.' + cat).forEach(element => element.classList.remove('hidden'))
@@ -364,7 +361,8 @@
     //     imageListItems.addEventListener('click', function (){ openSheet('sheet-meme', '') });
     // });
 
-    window.addEventListener('popstate', function(){
+
+    window.addEventListener(function(){
         closeSheets();
     });
 
@@ -374,20 +372,24 @@
         // selecteer de juiste sheet op basis van id
         let sheet = document.getElementById(sheetID);
 
-        // zorg dat de sheet geladen wordt voor de browser,maar door margin is deze nog niet in het zicht
+        // zorg dat de sheet geladen wordt voor de browser, maar door margin is deze nog niet in het zicht
         sheet.classList.remove('hidden');
 
         // even wachten zodat het element zeker zichtbaar is voor de browser(wel uit het zicht van de gebruiker)en geanimeerd kan worden
         setTimeout(function(){ sheet.classList.remove('sheet-out-of-view'); }, 10);
 
-        // als de homepage heel lang zou zijn kan je onder de sheet door scrollen,dat willen we als de sheet open is voorkomen(wel pas na animatie)
-        setTimeout(function(){
-            let maxHoogteMain = sheet.getElementsByTagName('main')[0].offsetHeight - 10;
-            document.getElementById('main-content').style.height = maxHoogteMain + 'px';
-            document.getElementById('main-content').style.overflowY = 'hidden';
-        }, 300);
 
-        // Pas de url aan zodat de pagina uiteindelijk ook gedeeld kan worden,maar refresh niet!
+
+        // als de homepage heel lang zou zijn kan je onder de sheet door scrollen,dat willen we als de sheet open is voorkomen(wel pas na animatie)
+        // setTimeout(function(){
+        //     let maxHoogteMain = sheet.getElementsByTagName('main')[0].offsetHeight - 10;
+        //     document.getElementById('main-content').style.height = maxHoogteMain + 'px';
+        //     document.getElementById('main-content').style.overflowY = 'hidden';
+        // }, 300);
+
+
+
+        // Pas de url aan zodat de pagina uiteindelijk ook gedeeld kan worden, maar refresh niet!
         let newURL = window.location.href + '?sheet=' +sheetID;
         history.pushState(null,null,newURL);
 
@@ -408,9 +410,16 @@
             setTimeout(function(){ sheet.classList.add('hidden'); }, 310);
         });
 
-        // URL weer aanpassen naar home voor de zekeheid
+        // URL weer aanpassen naar home voor de zekerheid
         history.pushState(null,null,window.location.pathname);
     }
+
+
+    window.addEventListener("load", () => {
+        if ("serviceWorker" in navigator) {
+            navigator.serviceWorker.register("service-worker.js");
+        }
+    });
 
 
 </script>
