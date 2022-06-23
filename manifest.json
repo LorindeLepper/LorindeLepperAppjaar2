@@ -17,7 +17,7 @@
   "scope": "/",
   "id": "meme",
   "start_url": ".",
-  "display": "fullscreen",
+  "display": "standalone",
   "orientation": "landscape",
   "background_color": "pink",
   "theme_color": "pink"
